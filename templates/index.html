@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="icon" type="images/descarga" href="{{ url_for('static', filename='images/sol.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Weather App</h1>
+    </header>
+
+    <div class="search-container">
+        <form method="POST">
+            <input type="text" name="ciudad" placeholder="Escribe una ciudad..." required>
+            <button type="submit">Buscar</button>
+        </form>
+    </div>
+
+    {% if weather_data %}
+    <div class="results">
+        <h2>Clima en {{ weather_data.ciudad }}</h2>
+        <p><strong>Temperatura:</strong> {{ weather_data.temperatura }}°C</p>
+        <p><strong>Descripción:</strong> {{ weather_data.descripcion }}</p>
+        <p><strong>Latitud:</strong> {{ weather_data.latitud }}</p>
+        <p><strong>Longitud:</strong> {{ weather_data.longitud }}</p>
+    </div>
+    {% endif %}
+
+    <footer class="bg-info text-center text-lg-start fixed-bottom">
+        <div class="text-center p-3" style="background-color:white">
+            2024 Copyright:
+            <a href="cv.html" target="_blank">Aldo Bastidas</a>
+        </footer>
+
+</body>
+</html>
